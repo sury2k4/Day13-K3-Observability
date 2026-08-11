@@ -1,5 +1,7 @@
 # Báo cáo Day 13 Observability
 
+Trạng thái: đã hoàn thành đến Checkpoint 1. Checkpoint 2–3 cần evidence runtime Langfuse/dashboard/challenge chính thức và sẽ được bổ sung sau.
+
 ## 1. Thông tin nhóm
 
 - Tên nhóm:
@@ -9,15 +11,15 @@
 
 ## 2. Kết quả kỹ thuật
 
-- Điểm `validate_logs.py`:
+- Điểm `validate_logs.py`: 100/100 (2 correlation IDs, 0 PII leak)
 - Tổng số traces:
-- Số PII leak còn lại:
+- Số PII leak còn lại: 0
 - Link/đường dẫn dashboard:
 
 ## 3. Logging và tracing
 
-- Evidence correlation ID:
-- Evidence PII redaction:
+- Evidence correlation ID: [logging_pii_checkpoint-1.jsonl](evidence/logging_pii_checkpoint-1.jsonl), `req-abcdef12` và `req-7a7c2ed8`
+- Evidence PII redaction: [logging_pii_checkpoint-1.jsonl](evidence/logging_pii_checkpoint-1.jsonl)
 - Evidence trace waterfall:
 - Giải thích một span đáng chú ý:
 
