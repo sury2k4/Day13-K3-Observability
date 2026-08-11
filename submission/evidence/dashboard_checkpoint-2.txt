@@ -1,0 +1,10 @@
+Command: python scripts/validate_dashboard.py
+Result: HỢP LỆ: 6/6 panel có trong dashboard contract.
+
+Panels verified from config/dashboard.yaml:
+- latency: P50/P95/P99, ms, threshold P95 <= 3000
+- traffic: count/rate_per_minute, requests_per_minute, threshold >= 1
+- errors: error_rate_pct/count_by_value, percent, threshold <= 2
+- cost: sum_by_minute/total, usd, threshold <= 2.5
+- tokens: sum_by_field, tokens, threshold <= 50000
+- quality: mean, score_0_to_1, threshold >= 0.75

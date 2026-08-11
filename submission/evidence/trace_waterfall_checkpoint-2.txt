@@ -1,0 +1,18 @@
+Trace ID: 8c97f83e077d33e3b9eae1375f20c1de
+Trace name: run
+Session: s10
+Trace metadata: prompt_name=day13-chat, prompt_label=candidate, prompt_version=2, prompt_source=langfuse
+Tags: claude-sonnet-4-5, lab, qa
+Latency: 0.15 s
+Total cost: 0.002019 USD
+
+Waterfall:
+  GENERATION run
+  observation_id=e34dd3644fe9a51f
+  model=claude-sonnet-4-5
+  prompt_version=2
+  prompt_tokens=38
+  completion_tokens=127
+  total_tokens=165
+  cost=0.002019 USD
+  latency=0.15 s
