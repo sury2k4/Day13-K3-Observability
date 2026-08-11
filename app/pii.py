@@ -1,3 +1,6 @@
+# Author: Nguyễn Công Hùng - 2A202601071
+# Role: Backend (Checkpoint 1 - PII Redaction & Data Sanitization Module)
+
 from __future__ import annotations
 
 import hashlib

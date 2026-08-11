@@ -1,3 +1,6 @@
+# Author: Nguyễn Công Hùng - 2A202601071
+# Role: Backend (Checkpoint 1 - Correlation ID Middleware & Request Contextvars Binding)
+
 from __future__ import annotations
 
 import time

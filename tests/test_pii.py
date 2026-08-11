@@ -1,3 +1,6 @@
+# Author: Nguyễn Công Hùng - 2A202601071
+# Role: Backend (Checkpoint 1 - Unit Tests for PII Redaction)
+
 from app.pii import scrub_text
 
 
