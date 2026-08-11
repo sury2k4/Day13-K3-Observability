@@ -1,3 +1,6 @@
+# Author: Lý Minh Hải - 2A202601503
+# Role: QA (Checkpoint 3 - Incident State Simulation & Controls)
+
 from __future__ import annotations
 
 STATE = {

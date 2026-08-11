@@ -4,10 +4,13 @@ Trạng thái: đã hoàn thành đến Checkpoint 3.
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
-- Repository URL:
-- Commit SHA cuối:
+- Tên nhóm: Nhóm 3
+- Repository URL: https://github.com/sury2k4/Day13-K3-Observability.git
+- Commit SHA cuối: 9726a52
 - Thành viên và vai trò:
+  - Nguyễn Công Hùng - 2A202601071 (Backend - CP1)
+  - Hoàng Quang Minh - 2A202601301 (SRE - CP2)
+  - Lý Minh Hải - 2A202601503 (QA - CP3 & Report)
 
 ## 2. Kết quả kỹ thuật
 
@@ -55,4 +58,6 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 
 | Thành viên | Phần việc | Commit/PR | Điều đã học |
 |---|---|---|---|
-| | | | |
+| Nguyễn Công Hùng (2A202601071) | Backend (CP1): Xây dựng JSONL logging với correlation ID tracking (`x-request-id`), bổ sung metadata API (`user_id_hash`, `session_id`, `feature`, `model`, `env`), xây dựng module redact thông tin nhạy cảm PII (Email, Phone VN, CCCD, Credit Card). | `5e86e2c` (`CP1: logging correlation and PII redaction`) | Hiểu rõ cơ chế `structlog` & contextvars trong FastAPI, kỹ năng redaction PII tự động trước khi ghi log. |
+| Hoàng Quang Minh (2A202601301) | SRE (CP2): Cấu hình OpenTelemetry / Langfuse tracing, prompt versioning (v1/v2, baseline/candidate/production, rollback), thiết lập dashboard yaml & alert rules (`config/alert_rules.yaml`, `docs/alerts.md`). | `ff60bfa` / `2130af7` (`checkpoint-2` & `checkpoint-3`) | Nắm vững quy trình quản lý phiên bản prompt, xây dựng metrics dashboard & thiết lập ngưỡng alert SLO. |
+| Lý Minh Hải (2A202601503) | QA (CP3 & Report): Điều tra incident challenge `day13-k3-observability-v1`, khoanh vùng root cause từ correlation ID & trace waterfall, đề xuất giải pháp fix (timeout/fallback) & phòng ngừa, QA validation toàn bộ hệ thống (`validate_logs.py`, `validate_dashboard.py`, `pytest`), hoàn thiện `REPORT.md`. | `CP3: document official challenge investigation and report completion` | Kỹ năng troubleshooting Observability (Metrics -> Traces -> Logs -> Root Cause), quản lý chất lượng QA và hoàn thiện báo cáo kỹ thuật. |

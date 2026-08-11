@@ -1,3 +1,6 @@
+# Author: Lý Minh Hải - 2A202601503
+# Role: QA (Checkpoint 3 - Challenge Configuration & Incident Unit Tests)
+
 from __future__ import annotations
 
 import json
