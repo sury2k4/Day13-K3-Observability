@@ -1,26 +1,17 @@
-# Yêu cầu dashboard
+# Dashboard specification
 
-Contract có thể kiểm tra bằng máy nằm tại `config/dashboard.yaml`. Hướng dẫn dựng và kiểm tra runtime nằm tại [DASHBOARD_SETUP.md](DASHBOARD_SETUP.md).
+`config/dashboard.yaml` is the machine-validated contract. The dashboard reads `data/logs.jsonl`; `GET /metrics` exposes the same six groups as runtime snapshots. Use a 60-minute default range, refresh every 30 seconds, and show each threshold as an SLO line.
 
-Dashboard chính cần đủ 6 nhóm thông tin:
+| Group | Dashboard data | Runtime metric(s) | Unit | Visualization | Threshold |
+| --- | --- | --- | --- | --- | --- |
+| Latency | `response_sent.latency_ms` P50/P95/P99 | `latency_p50`, `latency_p95`, `latency_p99` | ms | percentile time series | P95 <= 3000 ms |
+| Traffic | `request_received` count/rate | `traffic` | requests/minute | count time series | >= 1 request/minute |
+| Error | `request_failed` rate and `error_type` breakdown | `error_rate_pct`, `error_breakdown` | percent | rate plus breakdown | <= 2% |
+| Cost | `response_sent.cost_usd` total and average | `total_cost_usd`, `avg_cost_usd` | USD | time series plus summary | <= 2.5 USD/day |
+| Tokens | `response_sent.tokens_in`, `response_sent.tokens_out` | `tokens_in_total`, `tokens_out_total` | tokens | dual-series totals | <= 50,000 tokens |
+| Quality | `response_sent.quality_score` mean | `quality_avg` | score (0-1) | average time series | >= 0.75 |
 
-1. Latency P50/P95/P99.
-2. Traffic: request count hoặc QPS.
-3. Error rate và breakdown theo loại lỗi.
-4. Cost theo thời gian.
-5. Tổng token input/output.
-6. Quality proxy.
-
-Tiêu chuẩn trình bày:
-
-- Khoảng thời gian mặc định: 1 giờ.
-- Tự refresh mỗi 15–30 giây nếu công cụ hỗ trợ.
-- Có threshold hoặc SLO line.
-- Ghi rõ đơn vị.
-- Chỉ giữ 6–8 panel quan trọng ở lớp chính.
-- Screenshot phải nhìn được tên panel và khoảng thời gian.
-
-Kiểm tra contract trước khi chụp evidence:
+The dashboard tool may be Streamlit, Grafana, a notebook, or equivalent; Langfuse is used for trace and prompt investigation rather than as the dashboard data source. Build exactly these six conceptual groups, then validate the contract before collecting UI evidence:
 
 ```bash
 python scripts/validate_dashboard.py

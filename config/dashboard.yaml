@@ -48,8 +48,8 @@ dashboard:
       source: data/logs.jsonl
       events: [response_sent]
       fields: [cost_usd]
-      aggregations: [sum_by_minute, total]
-      query: 'event == "response_sent" | sum(cost_usd) by 1m; sum(cost_usd)'
+      aggregations: [sum_by_minute, total, average]
+      query: 'event == "response_sent" | sum(cost_usd) by 1m; sum(cost_usd); avg(cost_usd)'
       unit: usd
       threshold:
         aggregation: total
