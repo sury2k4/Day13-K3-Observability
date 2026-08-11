@@ -1,6 +1,6 @@
 # Báo cáo Day 13 Observability
 
-Trạng thái: đã hoàn thành đến Checkpoint 2. Checkpoint 3 chờ điều tra challenge chính thức và evidence runtime tương ứng.
+Trạng thái: đã hoàn thành đến Checkpoint 3.
 
 ## 1. Thông tin nhóm
 
@@ -40,13 +40,14 @@ Trạng thái: đã hoàn thành đến Checkpoint 2. Checkpoint 3 chờ điều
 
 ## 6. Điều tra challenge
 
-- Challenge ID:
-- Triệu chứng từ metrics:
-- Trace ID liên quan:
-- Log line/correlation ID liên quan:
-- Root cause:
-- Fix action:
-- Preventive measure:
+- Evidence: [challenge_checkpoint-3.txt](evidence/challenge_checkpoint-3.txt)
+- Challenge ID: `day13-k3-observability-v1`
+- Triệu chứng từ metrics: latency P50 2650 ms, P95 2992 ms, vượt ngưỡng challenge 2000 ms; error breakdown rỗng.
+- Trace ID liên quan: `389e00d5f402473a8202a0e4fbfb7cbc` và `8d041c2baee1316ed24ad81a8ec9b336`
+- Log line/correlation ID liên quan: `req-0e75c59b` (2992 ms), `req-1f99cb65` (2651 ms)
+- Root cause: `retrieve()` bị incident `rag_slow` chèn `sleep(2.5)`.
+- Fix action: tắt incident và xác nhận latency hồi phục 150–155 ms; production fix dùng timeout retrieval và fallback nhanh.
+- Preventive measure: alert P95, metric riêng cho retrieval span và load test timeout/fallback.
 
 ## 7. Đóng góp cá nhân
 
