@@ -1,0 +1,37 @@
+Challenge ID: day13-k3-observability-v1
+Cohort: K3
+Incident: rag_slow
+Affected feature: refund
+Threshold: 2000 ms
+
+Metrics symptom while incident was enabled:
+GET /metrics -> traffic=5, latency_p50=2650.0 ms, latency_p95=2992.0 ms,
+latency_p99=2992.0 ms, error_breakdown={}, quality_avg=0.86.
+
+Trace evidence:
+- 389e00d5f402473a8202a0e4fbfb7cbc / session k3-challenge-s01 / latency 2.993 s
+- 8d041c2baee1316ed24ad81a8ec9b336 / session k3-challenge-s02 / latency 2.651 s
+- 90ed70ef794c9be6330e79573e44ac5a / session k3-challenge-s04 / latency 2.651 s
+- d13466f62cdccad601a3845906985dca / session k3-challenge-s03 / latency 2.651 s
+- e24f975442a05b09ae8a0b49089680f5 / session k3-challenge-s05 / latency 2.652 s
+
+Log evidence:
+- correlation_id=req-0e75c59b, feature=refund, session_id=k3-challenge-s01, latency_ms=2992
+- correlation_id=req-1f99cb65, feature=refund, session_id=k3-challenge-s02, latency_ms=2651
+
+Root cause:
+`app/mock_rag.py:retrieve()` sleeps 2.5 seconds whenever STATE["rag_slow"] is enabled.
+The traces show the same roughly 2.65–2.99 second generation latency, while error_breakdown is empty;
+the matching logs prove the affected refund requests experienced the delay.
+
+Mitigation and verification:
+The official incident was disabled. Follow-up challenge requests had latency 150–155 ms
+(for example correlation_id=req-76f9efad), confirming recovery.
+
+Fix action:
+Disable the incident flag immediately; in production, remove the injected delay and add a bounded
+retrieval timeout with a fast fallback response.
+
+Preventive measure:
+Alert on latency_p95_ms > 3000 for 10m, add retrieval-span latency metrics, and test timeout/fallback
+behavior in load tests before release.

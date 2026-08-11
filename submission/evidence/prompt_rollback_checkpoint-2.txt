@@ -1,0 +1,8 @@
+Prompt: day13-chat
+
+1. Version 1 created with labels: baseline, production
+2. Version 2 created with label: candidate
+3. Label switch: version 1 production removed; version 2 labels became candidate, production
+4. Rollback: version 2 production removed; version 1 labels restored to baseline, production
+
+Final Langfuse state: version 1 = baseline + production; version 2 = candidate.

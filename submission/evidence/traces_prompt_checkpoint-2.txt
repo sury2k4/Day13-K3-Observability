@@ -1,0 +1,25 @@
+Langfuse project: configured project (credentials omitted)
+
+Baseline traces — prompt_name=day13-chat, prompt_label=baseline, prompt_version=1, prompt_source=langfuse:
+cb7529f3273080b01ce6881f1f958a3b
+ab2f52d70a356f3124ae878b61240726
+e7559990376693eec4c3e5d77db4e6f3
+51f1d667ff5a8cdf65fe5a1704dacccdf
+bf4858f614fdb9a8d83965deea7dcdf
+92614f2ca7df2c45adc10d8371158ea7
+297f3eafe518e7cd8c724306f00c6a38
+5290956d9dcd9e853a66f164d187d272
+5b5c7695e2df99f09f8dea78cf0bb677
+9c6c33540e854ae86dee21cfe78f8b44
+
+Candidate traces — prompt_name=day13-chat, prompt_label=candidate, prompt_version=2, prompt_source=langfuse:
+3dec2df60b61c84eeda4537d7a3d8a5a
+627fd941621d26301f1f0294ce923c24
+34af30faa142b05adc2119fec435e124
+c3108be0035141ff5cfc3e90b4bacd60
+982e31d439449648d950516dcac3fb08
+556bc8ad783390bc0dd1fff2638d4c53
+aa1edbfa2e5c5c25a3d9de6c598242b8
+97f7d28c3d33f77db11c1768acf07a84
+b9159e78f31b9e0b1751ae464046d0b0
+8c97f83e077d33e3b9eae1375f20c1de
